@@ -87,6 +87,18 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
 
+  @media (max-width: 768px) {
+    padding: 4rem 0 2rem;
+    min-height: 80vh;
+    background-attachment: scroll;
+    background-position: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0 1.5rem;
+    min-height: 70vh;
+  }
+
 
   &::before {
     content: '';
@@ -626,6 +638,14 @@ const HighlightsSection = styled.section`
     filter: blur(150px);
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const HighlightsContent = styled.div`
@@ -648,6 +668,24 @@ const CardsGrid = styled.div`
   & > *:nth-child(3) { grid-area: 2 / 2; } /* Center */
   & > *:nth-child(4) { grid-area: 3 / 1; } /* Bottom left */
   & > *:nth-child(5) { grid-area: 3 / 3; } /* Bottom right */
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(3, 300px);
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 const HighlightsTitle = styled.h2`
@@ -659,6 +697,18 @@ const HighlightsTitle = styled.h2`
   -webkit-text-fill-color: #ffffff !important;
   text-transform: uppercase !important;
   letter-spacing: 0.3em !important;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem !important;
+    margin-bottom: 2rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 0.1em !important;
+  }
 `;
 
 const CategoryCard = styled.div`
@@ -679,6 +729,24 @@ const CategoryCard = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  @media (max-width: 1200px) {
+    width: 300px;
+    height: 300px;
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    padding: 2rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+    min-height: 200px;
+  }
 
   &::before {
     content: '';

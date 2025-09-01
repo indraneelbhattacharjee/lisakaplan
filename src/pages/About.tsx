@@ -37,6 +37,14 @@ const HeroSection = styled.section`
       transform: scale(1);
     }
   }
+
+  @media (max-width: 768px) {
+    min-height: 50vh;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 40vh;
+  }
 `;
 
 
@@ -98,6 +106,14 @@ const StoryImage = styled.div`
   position: relative;
   opacity: 1;
   transform: translateX(0);
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    height: 300px;
+  }
   
   &.visible {
     opacity: 1;
@@ -234,6 +250,34 @@ const CallToAction = styled.div`
     -webkit-background-clip: unset !important;
     filter: none !important;
     text-shadow: 0 0 15px rgba(1, 46, 157, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+    border-radius: 20px;
+    
+    h2 {
+      font-size: 3rem;
+      letter-spacing: 0.1em;
+    }
+    
+    p {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    margin-top: 2rem;
+    
+    h2 {
+      font-size: 2.5rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+    }
   }
 `;
 

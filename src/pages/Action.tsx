@@ -166,6 +166,20 @@ const PrioritiesGrid = styled.div`
     transform: translateX(-50%);
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    gap: 3rem;
+    margin-bottom: 4rem;
+    
+    &::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 const PriorityCard = styled.div<{ $isEven: boolean }>`
@@ -180,8 +194,16 @@ const PriorityCard = styled.div<{ $isEven: boolean }>`
   cursor: pointer;
   max-width: 500px;
   align-self: ${props => props.$isEven ? 'flex-end' : 'flex-start'};
-  
 
+  @media (max-width: 768px) {
+    max-width: 100%;
+    align-self: center;
+    padding: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
 
   &::before {
     content: '';
@@ -265,6 +287,12 @@ const ModalOverlay = styled.div<{ $isOpen: boolean }>`
   z-index: 1000;
   padding: 2rem;
   backdrop-filter: blur(5px);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
 `;
 
 const ModalContent = styled.div`
@@ -278,6 +306,18 @@ const ModalContent = styled.div`
   position: relative;
   animation: ${slideIn} 0.3s ease-out;
   backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    max-width: 95vw;
+    max-height: 85vh;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 98vw;
+    max-height: 80vh;
+    border-radius: 10px;
+  }
 `;
 
 const ModalHeader = styled.div`
@@ -286,6 +326,14 @@ const ModalHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1rem 0.5rem;
+  }
 `;
 
 const ModalTitle = styled.h2`
@@ -313,6 +361,14 @@ const CloseButton = styled.button`
 
 const ModalBody = styled.div`
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const CategorySection = styled.div`
