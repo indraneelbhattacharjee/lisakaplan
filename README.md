@@ -1,46 +1,125 @@
-# Getting Started with Create React App
+# Lisa Kaplan - Sacramento City Council District 1 Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A beautiful, professional React website for Lisa Kaplan, Sacramento City Councilmember representing District 1. This website emphasizes community leadership, transparency, and accessibility while providing residents with easy ways to connect and get involved.
 
-## Available Scripts
+## 🎨 Design Features
 
-In the project directory, you can run:
+- **Professional Civic Design**: Clean, modern layout with navy blue, gold, and white color scheme
+- **Mobile-First Responsive**: Fully responsive design that works on all devices
+- **Accessibility Compliant**: WCAG standards with proper contrast, alt text, and keyboard navigation
+- **Community-Focused**: Emphasizes public service and community engagement over campaign messaging
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Pages & Sections
+- **Homepage**: Hero section, mission statement, and quick action buttons
+- **About Lisa**: Biography, career timeline, and core values
+- **District & Priorities**: Interactive map placeholder, district information, and key initiatives
+- **Get Involved**: Volunteer opportunities, newsletter signup, and community events
+- **News & Updates**: Blog-style updates and announcements
+- **Constituent Services**: Contact forms, issue reporting, and city service links
+- **Contact**: Office information, contact form, and location details
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technical Features
+- **React 18** with TypeScript for type safety
+- **Styled Components** for modern CSS-in-JS styling
+- **React Router** for seamless navigation
+- **React Icons** for consistent iconography
+- **Mobile-responsive** design with touch-friendly interactions
+- **Form handling** with validation and state management
 
-### `npm test`
+## 🛠️ Installation & Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-### `npm run build`
+### Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd lisa-kaplan-website
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+4. **Open your browser**
+   Navigate to `http://localhost:3000` to view the website
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Available Scripts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📱 Responsive Design
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The website is fully responsive and optimized for:
+- **Desktop**: 1200px+ layouts with full navigation
+- **Tablet**: 768px-1199px with adapted layouts
+- **Mobile**: <768px with mobile menu and stacked layouts
 
-## Learn More
+## 🎯 Key Design Principles
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Civic-First Approach
+- Professional typography (sans-serif headers, serif body text)
+- Government-appropriate color palette
+- Clear information hierarchy
+- Accessible design patterns
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Community Engagement
+- Easy contact methods
+- Clear call-to-action buttons
+- Transparent communication channels
+- Resident-focused content
+
+### Professional Presentation
+- Clean, modern aesthetics
+- Consistent branding
+- High-quality visual elements
+- Professional photography placeholders
+
+## 🔧 Customization
+
+### Colors
+The website uses a consistent color palette defined in styled-components:
+- **Primary Navy**: `#1a365d`
+- **Secondary Blue**: `#2d5a87`
+- **Accent Gold**: `#f4d03f`
+- **Text Dark**: `#333`
+- **Text Light**: `#666`
+
+### Content Updates
+- All content is easily editable in the component files
+- Contact information can be updated in the respective components
+- Images and media can be replaced with actual assets
+
+## 📞 Contact Information
+
+**Lisa Kaplan**  
+Sacramento City Council District 1  
+Phone: (916) 808-7001  
+Email: lisa.kaplan@cityofsacramento.org  
+Office: North Natomas, Sacramento, CA
+
+## 🤝 Contributing
+
+This website is designed for Lisa Kaplan's official use. For technical improvements or accessibility enhancements, please ensure all changes maintain the professional, civic-oriented design principles.
+
+## 📄 License
+
+This project is created for Lisa Kaplan's official use as Sacramento City Councilmember for District 1.
+
+---
+
+**Built with ❤️ for the Sacramento community**

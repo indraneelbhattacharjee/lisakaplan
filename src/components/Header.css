@@ -1,0 +1,241 @@
+:root {
+  --bg: rgba(1, 46, 157, 0.9);
+  --bg-scrolled: rgba(1, 46, 157, 0.95);
+  --border: rgba(255,255,255,0.1);
+  --text: #e5edf6;
+  --muted: #97a6b8;
+  --accent: #60a5fa;
+  --brand-grad: linear-gradient(135deg,#ffffff 0%,#60a5fa 50%,#a78bfa 100%);
+  --donate-grad: linear-gradient(135deg,#ef4444 0%,#dc2626 100%);
+  --shadow: 0 10px 30px rgba(1, 46, 157, 0.4);
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Base header */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--bg);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  transition: background .25s ease, padding .25s ease, box-shadow .25s ease;
+  padding-block: .85rem;
+}
+.site-header.is-scrolled {
+  background: var(--bg-scrolled);
+  padding-block: .55rem;
+  box-shadow: var(--shadow);
+}
+
+/* NAV WRAPPER — all in one row */
+.nav-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-left: 468px;           /* shift entire navbar to the right */
+
+  display: flex;
+  align-items: center;          /* vertical centering */
+  gap: 2rem;
+  flex-wrap: nowrap;            /* prevent wrapping */
+}
+
+/* BETTERTOGETHER HASHTAG */
+.bettertogether-tag {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 2rem;
+  margin-left: -14rem;
+  white-space: nowrap;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.bettertogether-tag:hover {
+  opacity: 1;
+}
+
+/* LOGO / BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;               /* prevent brand from shrinking */
+  margin-left: -27rem;          /* move brand to the left */
+}
+.brand-logo {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
+/* DESKTOP NAV */
+.nav {
+  flex: 1;
+  min-width: 0;                 /* allow flex item to shrink */
+}
+.nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;          /* keeps text baseline centered */
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;            /* prevent wrapping */
+  white-space: nowrap;          /* prevent text wrapping */
+}
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  position: relative;
+}
+.nav-link.is-active {
+  color: #ffffff;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* DONATE BUTTON — extreme right */
+.donate-btn {
+  display: inline-flex;
+  align-items: center;          /* heart + text aligned */
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 2rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--donate-grad);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+  transition: transform .15s ease, filter .15s ease;
+  flex-shrink: 0;               /* prevent donate button from shrinking */
+}
+.donate-btn svg {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+.donate-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* HAMBURGER (mobile only) */
+.hamburger {
+  display: none;
+  padding: .55rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 1024px) {
+  .nav { display: none; }
+  .donate-btn { display: none; } /* hide desktop donate in mobile */
+  .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+/* MOBILE DRAWER */
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: auto;
+  width: 85%;
+  max-width: 340px;
+  background: rgba(14,16,20,.98);
+  backdrop-filter: blur(14px);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  z-index: 1200;
+}
+.drawer-open {
+  transform: translateX(0);
+}
+.drawer-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  padding: .6rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  cursor: pointer;
+}
+.drawer-list {
+  list-style: none;
+  margin: 0;
+  padding: 80px 22px 24px;
+  display: grid;
+  gap: 12px;
+}
+.drawer-link {
+  display: block;
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.drawer-donate {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .9rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--donate-grad);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* MOBILE BACKDROP */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(0,0,0,.45);
+  border: none;
+}
