@@ -280,7 +280,7 @@ const CheckboxGroup = styled.div`
 
   &:focus-within {
     border-color: #60a5fa;
-    background: white;
+  background: white;
     box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
   }
 `;
@@ -447,13 +447,13 @@ const GetInvolved: React.FC = () => {
                 <FormGroup>
                   <Label htmlFor="email">Email *</Label>
                   <Input
-                    type="email"
+                type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                  />
+                required
+              />
                 </FormGroup>
               </FormRow>
               

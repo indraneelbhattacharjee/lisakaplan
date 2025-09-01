@@ -75,7 +75,7 @@ const HomeContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(26, 32, 44, 0.6) 50%, rgba(10, 10, 10, 0.6) 100%), url('/favicon_io/lisajuly3rdpress.jpg');
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.2) 0%, rgba(26, 32, 44, 0.2) 50%, rgba(10, 10, 10, 0.2) 100%), url('/lisad1council.jpg');
   background-size: cover;
   background-position: center -10%;
   background-attachment: fixed;
@@ -122,26 +122,28 @@ const HeroContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  padding-right: 0;
-  margin-right: 20px;
+  padding-left: 2rem;
+  margin-left: 20px;
   padding-top: 2rem;
 
   @media (max-width: 768px) {
     padding: 0 1rem;
     justify-content: center;
     text-align: center;
-    margin-right: auto;
+    margin-left: auto;
   }
 `;
 
 const HeroTop = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
 
   @media (max-width: 768px) {
     justify-content: center;
     text-align: center;
+    align-items: center;
   }
 `;
 
@@ -220,25 +222,46 @@ const HeroSubtitle = styled.p`
   margin-right: auto;
 `;
 
+const HeroLogo = styled.div`
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: -5rem;
+  
+  img {
+    max-width: 400px;
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
+  
+  @media (max-width: 768px) {
+    text-align: center;
+    
+    img {
+      max-width: 250px;
+    }
+  }
+`;
+
 const HeroBio = styled.div`
   text-align: left;
   max-width: 500px;
-  margin-right: 0;
-  margin-top: 10rem;
+  margin-left: 0;
+  margin-top: 0.8rem;
   
   @media (max-width: 768px) {
     text-align: center;
     max-width: 100%;
-    margin-top: 4rem;
+    margin-top: 0.8rem;
   }
 `;
 
 const BioText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.8;
   color: #ffffff;
   margin-bottom: 2rem;
-  font-weight: 700;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 const GetInvolvedButton = styled(Link)`
@@ -587,6 +610,9 @@ const Home: React.FC = () => {
       <HeroSection>
         <HeroContent>
           <HeroTop>
+            <HeroLogo>
+              <img src="/kaplancampaignnew.png" alt="Lisa Kaplan Campaign Logo" />
+            </HeroLogo>
             <HeroBio>
               <BioText>
                 Lisa has served District 1 on the Sacramento City Council since 2022, and has been a champion for the voices of her constituents on the issues that matter most to them; from public safety and sustainable growth to efficiency in our public services, and improving our community's infrastructure & family amenities.
@@ -596,7 +622,7 @@ const Home: React.FC = () => {
                   Get Involved
                 </GetInvolvedButton>
                 <HeroActionButton to="/about">About Lisa</HeroActionButton>
-                <HeroActionButton to="/action">Action @ D1</HeroActionButton>
+                <HeroActionButton to="/action">Action For District 1</HeroActionButton>
               </HeroButtonGroup>
             </HeroBio>
           </HeroTop>

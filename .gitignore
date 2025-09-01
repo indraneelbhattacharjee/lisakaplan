@@ -116,3 +116,6 @@ temp/
 
 # Local Netlify folder
 .netlify
+
+# Git ignore file itself
+.gitignore

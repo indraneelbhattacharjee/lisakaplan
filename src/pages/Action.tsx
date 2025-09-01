@@ -81,7 +81,7 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1;
 `;
 
@@ -647,7 +647,7 @@ const Action: React.FC = () => {
         </MapBackground>
         <Overlay />
         <HeroContent>
-          <HeroTitle>Action at District 1</HeroTitle>
+                      <HeroTitle>Action For District 1</HeroTitle>
           <HeroSubtitle>
             Working together to address current challenges and build a stronger future for our community
           </HeroSubtitle>
@@ -664,15 +664,15 @@ const Action: React.FC = () => {
           <PrioritiesGrid>
             {categories.map((category) => (
               <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)}>
-                <PriorityIcon>
+              <PriorityIcon>
                   <IconWrapper icon={category.icon} size={40} />
-                </PriorityIcon>
+              </PriorityIcon>
                 <PriorityTitle>{category.title}</PriorityTitle>
                 <PriorityDescription>{category.description}</PriorityDescription>
                 <ClickToLearn>
                   Click to learn more →
                 </ClickToLearn>
-              </PriorityCard>
+            </PriorityCard>
             ))}
           </PrioritiesGrid>
         </SectionContent>

@@ -28,7 +28,7 @@
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
   transition: background .25s ease, padding .25s ease, box-shadow .25s ease;
-  padding-block: .85rem;
+  padding-block: .1rem;
 }
 .site-header.is-scrolled {
   background: var(--bg-scrolled);
@@ -74,10 +74,10 @@
   justify-content: center;
   text-decoration: none;
   flex-shrink: 0;               /* prevent brand from shrinking */
-  margin-left: -27rem;          /* move brand to the left */
+  margin-left: -22.5rem;          /* move brand to the left */
 }
 .brand-logo {
-  height: 50px;
+  height: 80px;
   width: auto;
   transition: transform 0.3s ease;
 }

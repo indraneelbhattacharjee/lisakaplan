@@ -1,4 +1,4 @@
-# Lisa Kaplan - Sacramento City Council District 1 Website
+# Lisa Kaplan - Action For District 1
 
 A beautiful, professional React website for Lisa Kaplan, Sacramento City Councilmember representing District 1. This website emphasizes community leadership, transparency, and accessibility while providing residents with easy ways to connect and get involved.
 

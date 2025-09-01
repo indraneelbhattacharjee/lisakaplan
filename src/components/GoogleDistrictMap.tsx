@@ -39,8 +39,8 @@ const GoogleDistrictMap: React.FC<GoogleDistrictMapProps> = ({ className }) => {
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    const loader = new Loader({
-      apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'AIzaSyCQtPRZ_kl7d_r4Kp64Iim-iSbqsTaY1fM',
+        const loader = new Loader({
+      apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
       version: 'weekly',
       libraries: ['places']
     });

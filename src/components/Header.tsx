@@ -12,7 +12,7 @@ const NAV = [
   { to: "/", label: "HOME" },
   { to: "/about", label: "ABOUT LISA" },
   { to: "/district", label: "DISTRICT 1" },
-  { to: "/action", label: "ACTION AT DISTRICT 1" },
+  { to: "/action", label: "ACTION FOR DISTRICT 1" },
   { to: "/get-involved", label: "GET INVOLVED" },
 ];
 
@@ -33,7 +33,7 @@ export default function Header() {
 
   const handleDonate = () =>
     window.open(
-      "https://secure.actblue.com/donate/lisa-kaplan-campaign",
+      "https://www.efundraisingconnections.com/c/LisaKaplan2026/",
       "_blank",
       "noopener,noreferrer"
     );
@@ -45,8 +45,8 @@ export default function Header() {
           {/* Left: Brand */}
           <Link to="/" className="brand" aria-label="Lisa Kaplan home">
             <img 
-              src="/favicon_io/KaplanLOGO.png" 
-              alt="Lisa Kaplan Logo" 
+              src="/navbarlogo.png" 
+              alt="Lisa Kaplan Campaign Logo" 
               className="brand-logo"
             />
           </Link>
