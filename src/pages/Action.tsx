@@ -43,26 +43,12 @@ const ActionContainer = styled.div`
 const HeroSection = styled.section`
   background: linear-gradient(135deg, #0a0a0a 0%, #1a202c 50%, #0a0a0a 100%);
   color: white;
-  padding: 6rem 0 4rem;
+  padding: 3rem 0 2rem;
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 25vh;
   display: flex;
   align-items: center;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.02) 0%, transparent 50%);
-    z-index: 1;
-  }
 `;
 
 const MapBackground = styled.div`
@@ -81,7 +67,7 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.033);
   z-index: 1;
 `;
 
@@ -100,14 +86,16 @@ const HeroContent = styled.div`
 
 const HeroTitle = styled.h1`
   font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
   animation: ${fadeInUp} 1s ease-out;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: unset !important;
 `;
 
 const HeroSubtitle = styled.p`
@@ -125,7 +113,7 @@ const HeroSubtitle = styled.p`
 
 const ActionSection = styled.section`
   padding: 6rem 0;
-  background: #0a0a0a;
+  background: linear-gradient(135deg, #f8f8ff 0%, #f0f8ff 100%);
 `;
 
 const SectionContent = styled.div`
@@ -143,16 +131,13 @@ const SectionTitle = styled.h2`
   font-weight: 800;
   margin-bottom: 1rem;
   text-align: center;
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #012E9D;
   animation: ${fadeInUp} 1s ease-out 0.3s both;
 `;
 
 const SectionSubtitle = styled.p`
   font-size: 1.3rem;
-  color: #a0aec0;
+  color: #1a1a1a;
   text-align: center;
   margin-bottom: 4rem;
   max-width: 800px;
@@ -163,24 +148,40 @@ const SectionSubtitle = styled.p`
 `;
 
 const PrioritiesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
   margin-bottom: 6rem;
   animation: ${fadeInUp} 1s ease-out 0.5s both;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #012E9D 0%, #60a5fa 50%, #012E9D 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
 `;
 
-const PriorityCard = styled.div`
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+const PriorityCard = styled.div<{ $isEven: boolean }>`
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #ffffff 100%);
+  border: 2px solid rgba(1, 46, 157, 0.15);
   border-radius: 20px;
   padding: 2.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 15px 35px rgba(1, 46, 157, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
+  max-width: 500px;
+  align-self: ${props => props.$isEven ? 'flex-end' : 'flex-start'};
+  
+
 
   &::before {
     content: '';
@@ -225,12 +226,12 @@ const PriorityIcon = styled.div`
 const PriorityTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 1rem;
 `;
 
 const PriorityDescription = styled.p`
-  color: #a0aec0;
+  color: #000000;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 `;
@@ -647,32 +648,24 @@ const Action: React.FC = () => {
         </MapBackground>
         <Overlay />
         <HeroContent>
-                      <HeroTitle>Action For District 1</HeroTitle>
-          <HeroSubtitle>
-            Working together to address current challenges and build a stronger future for our community
-          </HeroSubtitle>
+          <HeroTitle>ACTION FOR DISTRICT 1</HeroTitle>
         </HeroContent>
       </HeroSection>
 
       <ActionSection>
         <SectionContent>
-          <SectionTitle>Our Priorities</SectionTitle>
-          <SectionSubtitle>
-            Click on any category below to learn more about our specific actions and achievements
-          </SectionSubtitle>
-          
           <PrioritiesGrid>
-            {categories.map((category) => (
-              <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)}>
-              <PriorityIcon>
+            {categories.map((category, index) => (
+              <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)} $isEven={index % 2 === 1}>
+                <PriorityIcon>
                   <IconWrapper icon={category.icon} size={40} />
-              </PriorityIcon>
+                </PriorityIcon>
                 <PriorityTitle>{category.title}</PriorityTitle>
                 <PriorityDescription>{category.description}</PriorityDescription>
                 <ClickToLearn>
                   Click to learn more →
                 </ClickToLearn>
-            </PriorityCard>
+              </PriorityCard>
             ))}
           </PrioritiesGrid>
         </SectionContent>
