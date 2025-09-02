@@ -358,7 +358,7 @@ const About: React.FC = () => {
               id="image-2"
               className={`reverse ${visibleElements.has('image-2') ? 'visible' : ''}`}
             >
-              <img src="/lisaexpkids.jpg" alt="Lisa Kaplan - School Board Service" />
+              <img src="/lisaexp.png" alt="Lisa Kaplan - School Board Service" />
             </StoryImage>
             <StoryText 
               data-animate 

@@ -41,7 +41,10 @@ const ActionContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a202c 50%, #0a0a0a 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/actionford1bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   padding: 3rem 0 2rem;
   position: relative;
@@ -698,10 +701,6 @@ const Action: React.FC = () => {
   return (
     <ActionContainer>
       <HeroSection>
-        <MapBackground>
-          <GoogleDistrictMap />
-        </MapBackground>
-        <Overlay />
         <HeroContent>
           <HeroTitle>ACTION FOR DISTRICT 1</HeroTitle>
         </HeroContent>
