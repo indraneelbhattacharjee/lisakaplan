@@ -62,11 +62,11 @@ const MapBackground = styled.div`
 `;
 
 const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   background: rgba(0, 0, 0, 0.033);
   z-index: 1;
 `;
@@ -269,13 +269,13 @@ const ModalOverlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.4);
   display: ${props => props.$isOpen ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 2rem;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -285,8 +285,8 @@ const ModalOverlay = styled.div<{ $isOpen: boolean }>`
 `;
 
 const ModalContent = styled.div`
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   max-width: 900px;
   width: 100%;
@@ -294,7 +294,8 @@ const ModalContent = styled.div`
   overflow-y: auto;
   position: relative;
   animation: ${slideIn} 0.3s ease-out;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     max-width: 95vw;
@@ -311,7 +312,7 @@ const ModalContent = styled.div`
 
 const ModalHeader = styled.div`
   padding: 2rem 2rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -327,15 +328,24 @@ const ModalHeader = styled.div`
 
 const ModalTitle = styled.h2`
   font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: #000000 !important;
   margin: 0;
+  text-shadow: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 `;
 
 const CloseButton = styled.button`
   background: none;
   border: none;
-  color: #a0aec0;
+  color: #666666;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
@@ -343,8 +353,8 @@ const CloseButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    color: #000000;
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -370,8 +380,8 @@ const CategorySection = styled.div`
 
 const CategoryTitle = styled.h3`
   font-size: 1.3rem;
-  font-weight: 600;
-  color: #60a5fa;
+  font-weight: 700;
+  color: #000000;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -385,7 +395,7 @@ const BulletList = styled.ul`
 `;
 
 const BulletItem = styled.li`
-  color: #a0aec0;
+  color: #333333;
   line-height: 1.7;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
@@ -393,7 +403,7 @@ const BulletItem = styled.li`
 
   &::before {
     content: '•';
-    color: #60a5fa;
+    color: #012E9D;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -408,7 +418,7 @@ const SubBulletList = styled.ul`
 `;
 
 const SubBulletItem = styled.li`
-  color: #a0aec0;
+  color: #444444;
   line-height: 1.6;
   margin-bottom: 0.5rem;
   padding-left: 1rem;
@@ -417,7 +427,7 @@ const SubBulletItem = styled.li`
 
   &::before {
     content: '◦';
-    color: #60a5fa;
+    color: #012E9D;
     position: absolute;
     left: 0;
     top: 0;
@@ -431,7 +441,7 @@ const SubSubBulletList = styled.ul`
 `;
 
 const SubSubBulletItem = styled.li`
-  color: #a0aec0;
+  color: #555555;
   line-height: 1.5;
   margin-bottom: 0.3rem;
   padding-left: 1rem;
@@ -440,7 +450,7 @@ const SubSubBulletItem = styled.li`
 
   &::before {
     content: '▪';
-    color: #60a5fa;
+    color: #012E9D;
     position: absolute;
     left: 0;
     top: 0;
@@ -702,15 +712,15 @@ const Action: React.FC = () => {
           <PrioritiesGrid>
             {categories.map((category, index) => (
               <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)}>
-                <PriorityIcon>
+              <PriorityIcon>
                   <IconWrapper icon={category.icon} size={40} />
-                </PriorityIcon>
+              </PriorityIcon>
                 <PriorityTitle>{category.title}</PriorityTitle>
                 <PriorityDescription>{category.description}</PriorityDescription>
                 <ClickToLearn>
                   Click to learn more →
                 </ClickToLearn>
-              </PriorityCard>
+            </PriorityCard>
             ))}
           </PrioritiesGrid>
         </SectionContent>
