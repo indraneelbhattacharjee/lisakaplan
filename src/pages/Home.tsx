@@ -1,37 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaHandshake, FaNewspaper, FaUsers, FaShieldAlt, FaCity, FaTree, FaChild, FaHandHoldingHeart } from 'react-icons/fa';
-import { IconWrapper } from '../components/IconWrapper';
+import { FaShieldAlt, FaCity, FaTree, FaChild, FaHandHoldingHeart } from 'react-icons/fa';
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
-const float = keyframes`
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-`;
-
-const glow = keyframes`
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(96, 165, 250, 0.2);
-  }
-`;
 
 const pulse = keyframes`
   0%, 100% {
@@ -42,23 +14,7 @@ const pulse = keyframes`
   }
 `;
 
-const typewriter = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
 
-const blink = keyframes`
-  0%, 50% {
-    border-color: transparent;
-  }
-  51%, 100% {
-    border-color: #60a5fa;
-  }
-`;
 
 const fadeIn = keyframes`
   from {
@@ -199,41 +155,7 @@ const HeroActionButton = styled(Link)`
   }
 `;
 
-const HeroTitle = styled.h1`
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #60a5fa, transparent);
-  }
-`;
-
-const HeroSubtitle = styled.p`
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  margin-bottom: 3rem;
-  opacity: 1;
-  max-width: 1000px;
-  line-height: 1.6;
-  font-weight: 700;
-  color: #ffffff;
-  margin-left: auto;
-  margin-right: auto;
-`;
 
 const HeroLogo = styled.div`
   text-align: left;
@@ -298,327 +220,20 @@ const GetInvolvedButton = styled(Link)`
   }
 `;
 
-const HeroProfileImage = styled.div`
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  margin: -15.1875rem 0 0 -3rem;
-  overflow: hidden;
-  border: 4px solid rgba(96, 165, 250, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #60a5fa, #a78bfa, #60a5fa);
-    border-radius: 50%;
-    z-index: -1;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    width: 200px;
-    height: 200px;
-    margin: -7.59375rem auto 0;
-  }
-`;
 
 
 
-const ActionButtons = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 4rem;
-  margin-left: -3rem;
-  margin-top: 3rem;
 
-  @media (max-width: 768px) {
-    align-items: center;
-    margin-left: 0;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-`;
 
-const ActionButton = styled(Link)<{ $primary?: boolean }>`
-  background: ${props => props.$primary 
-    ? 'linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%)' 
-    : 'rgba(255, 255, 255, 0.05)'};
-  color: ${props => props.$primary ? '#60a5fa' : '#a0aec0'};
-  padding: 1.25rem 2.5rem;
-  border: 2px solid ${props => props.$primary ? 'rgba(96, 165, 250, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-  animation: ${float} 3s ease-in-out infinite;
-  min-height: 60px;
-  white-space: nowrap;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-  }
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.5);
-    background: ${props => props.$primary 
-      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%)' 
-      : 'rgba(255, 255, 255, 0.1)'};
-  }
 
-  &:hover::before {
-    left: 100%;
-  }
-`;
 
-const MissionSection = styled.section`
-  padding: 6rem 0;
-  background: #0a0a0a;
-  position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  }
-`;
 
-const MissionContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 0 1rem;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-`;
-
-const MissionText = styled.p`
-  font-size: 1.25rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  color: #a0aec0;
-  font-weight: 400;
-`;
-
-const FeaturesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  margin-top: 4rem;
-`;
-
-const FeatureCard = styled.div`
-  background: rgba(255, 255, 255, 0.02);
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
-  }
-`;
-
-const FeatureIcon = styled.div`
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  color: white;
-  font-size: 2.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(96, 165, 250, 0.1);
-  animation: ${float} 4s ease-in-out infinite;
-
-  ${FeatureCard}:hover & {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0.08) 100%);
-  }
-`;
-
-const FeatureTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-  font-weight: 700;
-`;
-
-const FeatureDescription = styled.p`
-  color: #a0aec0;
-  line-height: 1.7;
-  font-size: 1.1rem;
-`;
-
-const ContactSection = styled.section`
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a202c 100%);
-  padding: 6rem 0;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  }
-`;
-
-const ContactContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 0 1rem;
-  }
-`;
-
-const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-`;
-
-const ContactItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-  }
-`;
-
-const ContactIcon = styled.div`
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: ${float} 3s ease-in-out infinite;
-`;
-
-const ContactInfo = styled.div`
-  text-align: left;
-`;
-
-const ContactLabel = styled.div`
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-`;
-
-const ContactValue = styled.div`
-  color: #a0aec0;
-  font-size: 1rem;
-`;
 
 const HighlightsSection = styled.section`
-  padding: 6rem 0;
+  padding: 2rem 0;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%), 
               url('/lisaconf5.jpg');
   background-size: cover;
@@ -640,59 +255,28 @@ const HighlightsSection = styled.section`
   }
 
   @media (max-width: 768px) {
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
 
   @media (max-width: 480px) {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
   }
 `;
 
 const HighlightsContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
+  text-align: center;
 `;
 
-const CardsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 350px);
-  grid-template-rows: repeat(3, 350px);
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 3rem;
-  
-  /* Position cards to form X pattern */
-  & > *:nth-child(1) { grid-area: 1 / 1; } /* Top left */
-  & > *:nth-child(2) { grid-area: 1 / 3; } /* Top right */
-  & > *:nth-child(3) { grid-area: 2 / 2; } /* Center */
-  & > *:nth-child(4) { grid-area: 3 / 1; } /* Bottom left */
-  & > *:nth-child(5) { grid-area: 3 / 3; } /* Bottom right */
 
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 300px);
-    grid-template-rows: repeat(3, 300px);
-    gap: 0.8rem;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
-
-  @media (max-width: 480px) {
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-`;
 
 const HighlightsTitle = styled.h2`
   font-size: 3rem !important;
   font-weight: 900 !important;
   text-align: center !important;
-  margin-bottom: 3rem !important;
+  margin-bottom: 0.4rem !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   text-transform: uppercase !important;
@@ -700,261 +284,154 @@ const HighlightsTitle = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 2.5rem !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 0.27rem !important;
     letter-spacing: 0.2em !important;
   }
 
   @media (max-width: 480px) {
     font-size: 2rem !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 0.2rem !important;
     letter-spacing: 0.1em !important;
   }
 `;
 
-const CategoryCard = styled.div`
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a202c 50%, #0a0a0a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 2.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
+
+
+
+
+
+
+
+// New Achievements Section Styled Components
+const AchievementsGrid = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 3rem;
+  margin-left: 2rem;
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  width: 350px;
-  height: 350px;
+  height: 500px;
+  width: 100%;
+`;
+
+const AchievementCategory = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 0.8rem;
+  padding: 2rem 0 4rem;
+  color: #ffffff;
+  transition: all 0.5s ease-in-out;
   text-align: center;
-
-  @media (max-width: 1200px) {
-    width: 300px;
-    height: 300px;
-    padding: 2rem;
-  }
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  transform: translateY(0);
+  animation: ${fadeIn} 0.5s ease-in forwards;
+  overflow-x: visible;
 
   @media (max-width: 768px) {
+    gap: 0.6rem;
+    padding: 4rem 0 2rem;
     width: 100%;
-    height: auto;
-    min-height: 250px;
-    padding: 2rem 1.5rem;
+    min-height: 80vh;
+    align-items: center;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
-    padding: 1.5rem 1rem;
-    min-height: 200px;
+    padding: 3rem 0 1.5rem;
+    min-height: 70vh;
   }
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-  }
+const CategoryHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.33rem;
+`;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border-color: rgba(96, 165, 250, 0.2);
-    background: rgba(255, 255, 255, 0.03);
-    cursor: pointer;
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
-  }
+const CategoryIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  font-size: 1.2rem;
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.2);
+  border: 2px solid rgba(96, 165, 250, 0.2);
 `;
 
 const CategoryTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 1rem;
-  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 `;
 
-const CategoryIcon = styled.div`
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  color: #60a5fa;
-  font-size: 1.5rem;
-  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.2);
-  border: 2px solid rgba(96, 165, 250, 0.2);
+const AchievementContent = styled.div`
+  flex: 1;
 `;
 
-const CategoryPreview = styled.p`
-  color: #a0aec0;
-  line-height: 1.4;
-  margin-bottom: 0;
-  text-align: center;
-  font-size: 0.95rem;
-`;
 
-const HorizontalLine = styled.hr`
-  border: none;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(147, 112, 219, 0.5), transparent);
-  margin: 3rem 0;
-`;
 
-const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  
-  &.visible {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-`;
-
-const ModalContent = styled.div`
-  background: white;
-  border-radius: 20px;
-  padding: 3rem;
-  max-width: 800px;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  transform: scale(0.8);
-  transition: transform 0.3s ease;
-  
-  .visible & {
-    transform: scale(1);
-  }
-`;
-
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-`;
-
-const ModalTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #012E9D;
+const AchievementList = styled.ul`
+  list-style: none;
+  padding: 0;
   margin: 0;
 `;
 
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #666;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: #f0f0f0;
-    color: #333;
-  }
-`;
-
-const SwipeContainer = styled.div`
+const AchievementListItem = styled.li`
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+  padding: 1rem 1rem 1rem 2.5rem;
   position: relative;
-  overflow: hidden;
-  border-radius: 15px;
-  background: #f8f9fa;
-  padding: 2rem;
-  margin: 1rem 0;
-`;
+  opacity: 0;
+  animation: ${fadeIn} 0.5s ease-in forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+  text-align: left;
+  font-size: 0.9rem;
+  display: block;
+  min-height: 70px;
+  height: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 100%;
 
-const SwipeContent = styled.div`
-  display: flex;
-  transition: transform 0.3s ease;
-  transform: translateX(0);
-`;
+  &::before {
+    content: '•';
+    color: #60a5fa;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-size: 1.2rem;
+  }
 
-const SwipeItem = styled.div`
-  min-width: 100%;
-  padding: 1rem;
-  
-  h4 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #012E9D;
-    margin-bottom: 1rem;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-    color: #333;
-    
-    &:last-child {
-      border-bottom: none;
-    }
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: 0.75rem 0.75rem 0.75rem 2rem;
+    min-height: 60px;
+    min-width: 120px;
   }
 `;
 
-const SwipeControls = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-`;
 
-const SwipeButton = styled.button`
-  background: #012E9D;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: #1a4db8;
-    transform: translateY(-2px);
-  }
-  
-  &:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-  }
-`;
 
 const Home: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-
-
+  const [currentAchievement, setCurrentAchievement] = useState(0);
+  
   const highlightsData = {
     'Public Safety & Infrastructure': {
       preview: 'Keeping our communities safe and improving our infrastructure',
@@ -1043,30 +520,13 @@ const Home: React.FC = () => {
     }
   };
 
-  const openModal = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentSlide(0);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAchievement((prev: number) => (prev + 1) % Object.keys(highlightsData).length);
+    }, 4000); // Change every 4 seconds
 
-  const closeModal = () => {
-    setSelectedCategory(null);
-    setCurrentSlide(0);
-  };
-
-  const nextSlide = () => {
-    if (selectedCategory) {
-      const categoryData = highlightsData[selectedCategory as keyof typeof highlightsData];
-      if (currentSlide < categoryData.items.length - 1) {
-        setCurrentSlide(currentSlide + 1);
-      }
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
+    return () => clearInterval(interval);
+  }, [highlightsData]);
 
   return (
     <HomeContainer>
@@ -1096,76 +556,108 @@ const Home: React.FC = () => {
         <HighlightsContent>
           <HighlightsTitle>Achievements</HighlightsTitle>
           
-          <CardsGrid>
-            {Object.entries(highlightsData).map(([category, data]) => (
-              <CategoryCard 
-                key={category} 
-                onClick={() => {
-                  console.log('Card clicked:', category);
-                  openModal(category);
+          <AchievementsGrid>
+            {(() => {
+              const categories = Object.entries(highlightsData);
+              const [category, data] = categories[currentAchievement];
+              
+              return (
+                <AchievementCategory key={category}>
+                  <AchievementContent>
+                    <div style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: 'repeat(5, 1fr)',
+                      gap: '1.5rem',
+                      width: '100%',
+                      maxWidth: '100%',
+                      justifyItems: 'start',
+                      padding: '0 1rem'
+                    }}>
+                      {data.items.flatMap(item => item.content).map((content, contentIndex) => (
+                        <AchievementListItem 
+                          key={contentIndex}
+                          style={{ 
+                            '--animation-order': contentIndex,
+                            width: '100%',
+                            height: 'auto',
+                            minHeight: '70px'
+                          } as React.CSSProperties}
+                        >
+                          {content}
+                        </AchievementListItem>
+                      ))}
+                    </div>
+                  </AchievementContent>
+                </AchievementCategory>
+              );
+            })()}
+          </AchievementsGrid>
+          
+          {/* Action Link */}
+          <div style={{
+            textAlign: 'center',
+            marginTop: '2rem',
+            marginBottom: '1rem'
+          }}>
+            <Link 
+              to="/action" 
+              style={{
+                color: '#60a5fa',
+                textDecoration: 'none',
+                fontSize: '2.2rem',
+                fontWeight: '600',
+                display: 'inline-block',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                const target = e.target as HTMLElement;
+                target.style.color = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                const target = e.target as HTMLElement;
+                target.style.color = '#60a5fa';
+              }}
+            >
+              Action For District 1 →
+            </Link>
+            <div style={{
+              color: '#ffffff',
+              fontSize: '0.9rem',
+              marginTop: '0.5rem',
+              opacity: '0.8',
+              fontWeight: 'bold'
+            }}>
+              Please click the arrow to see full list of achievements
+            </div>
+          </div>
+          
+          {/* Navigation Dots */}
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '0.5rem', 
+            marginTop: '2rem'
+          }}>
+            {Object.keys(highlightsData).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentAchievement(index)}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  background: index === currentAchievement ? '#60a5fa' : 'rgba(255, 255, 255, 0.3)',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
                 }}
-                style={{ cursor: 'pointer' }}
-              >
-                <CategoryIcon>
-                  {category === 'Public Safety & Infrastructure' && <FaShieldAlt />}
-                  {category === 'City Services & Development' && <FaCity />}
-                  {category === 'Parks & Recreation' && <FaTree />}
-                  {category === 'Youth & Community Support' && <FaChild />}
-                  {category === 'Homelessness & Social Services' && <FaHandHoldingHeart />}
-                </CategoryIcon>
-                <CategoryTitle>{category}</CategoryTitle>
-                <CategoryPreview>{data.preview}</CategoryPreview>
-              </CategoryCard>
+              />
             ))}
-          </CardsGrid>
+          </div>
         </HighlightsContent>
       </HighlightsSection>
 
-      <Modal className={selectedCategory ? 'visible' : ''} onClick={closeModal}>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
-          {selectedCategory && (
-            <>
-              <ModalHeader>
-                <ModalTitle>{selectedCategory}</ModalTitle>
-                <CloseButton onClick={closeModal}>&times;</CloseButton>
-              </ModalHeader>
-              
-              <SwipeContainer>
-                <SwipeContent style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                  {highlightsData[selectedCategory as keyof typeof highlightsData].items.map((item, index) => (
-                    <SwipeItem key={index}>
-                      <h4>{item.title}</h4>
-                      <ul>
-                        {item.content.map((content, contentIndex) => (
-                          <li key={contentIndex}>{content}</li>
-                        ))}
-                      </ul>
-                    </SwipeItem>
-                  ))}
-                </SwipeContent>
-                
-                <SwipeControls>
-                  <SwipeButton 
-                    onClick={prevSlide} 
-                    disabled={currentSlide === 0}
-                  >
-                    ← Previous
-                  </SwipeButton>
-                  <span style={{ padding: '0.5rem 1rem', color: '#666' }}>
-                    {currentSlide + 1} of {highlightsData[selectedCategory as keyof typeof highlightsData].items.length}
-                  </span>
-                  <SwipeButton 
-                    onClick={nextSlide} 
-                    disabled={currentSlide === highlightsData[selectedCategory as keyof typeof highlightsData].items.length - 1}
-                  >
-                    Next →
-                  </SwipeButton>
-                </SwipeControls>
-              </SwipeContainer>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
     </HomeContainer>
   );
 };

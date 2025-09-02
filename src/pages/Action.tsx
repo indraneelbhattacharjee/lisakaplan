@@ -148,41 +148,32 @@ const SectionSubtitle = styled.p`
 `;
 
 const PrioritiesGrid = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  margin-bottom: 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
   animation: ${fadeInUp} 1s ease-out 0.5s both;
   position: relative;
   
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(180deg, #012E9D 0%, #60a5fa 50%, #012E9D 100%);
-    transform: translateX(-50%);
-    z-index: 1;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
   }
 
   @media (max-width: 768px) {
-    gap: 3rem;
-    margin-bottom: 4rem;
-    
-    &::before {
-      display: none;
-    }
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 
   @media (max-width: 480px) {
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
-const PriorityCard = styled.div<{ $isEven: boolean }>`
+const PriorityCard = styled.div`
   background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #ffffff 100%);
   border: 2px solid rgba(1, 46, 157, 0.15);
   border-radius: 20px;
@@ -192,12 +183,10 @@ const PriorityCard = styled.div<{ $isEven: boolean }>`
   position: relative;
   overflow: visible;
   cursor: pointer;
-  max-width: 500px;
-  align-self: ${props => props.$isEven ? 'flex-end' : 'flex-start'};
+  width: 100%;
+  height: 100%;
 
   @media (max-width: 768px) {
-    max-width: 100%;
-    align-self: center;
     padding: 2rem;
   }
 
@@ -712,7 +701,7 @@ const Action: React.FC = () => {
         <SectionContent>
           <PrioritiesGrid>
             {categories.map((category, index) => (
-              <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)} $isEven={index % 2 === 1}>
+              <PriorityCard key={category.id} onClick={() => handleCardClick(category.id)}>
                 <PriorityIcon>
                   <IconWrapper icon={category.icon} size={40} />
                 </PriorityIcon>

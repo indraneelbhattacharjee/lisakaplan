@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaShieldAlt, FaSchool, FaRoad, FaHome, FaBus, FaEye } from 'react-icons/fa';
-import { IconWrapper } from '../components/IconWrapper';
+import { FaShieldAlt, FaSchool, FaRoad, FaHome, FaBus, FaEye, FaTree, FaChild, FaHandHoldingHeart } from 'react-icons/fa';
 import GoogleDistrictMap from '../components/GoogleDistrictMap';
 
 const DistrictContainer = styled.div`
@@ -152,21 +151,7 @@ const InfoTitle = styled.h3`
   font-size: 1.3rem;
 `;
 
-const InfoText = styled.p`
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-`;
 
-const InfoList = styled.ul`
-  color: #666;
-  line-height: 1.6;
-  padding-left: 1.5rem;
-`;
-
-const InfoListItem = styled.li`
-  margin-bottom: 0.5rem;
-`;
 
 const PrioritiesGrid = styled.div`
   display: grid;
@@ -239,7 +224,7 @@ const District: React.FC = () => {
       <MainContent>
         <Section>
           <DistrictDescription>
-            District 1 encompasses North Natomas and surrounding areas of Sacramento, including vibrant neighborhoods, schools, parks, and growing communities.
+            District 1 encompasses North Natomas & parts of Robla as well as surrounding areas of Sacramento, including vibrant neighborhoods, schools, parks, and growing communities.
           </DistrictDescription>
         </Section>
       </MainContent>

@@ -107,7 +107,7 @@ const StoryImage = styled.div`
   opacity: 1;
   transform: translateX(0);
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     height: 400px;
   }
 
@@ -159,7 +159,7 @@ const StoryText = styled.div`
     background-clip: text !important;
     margin-bottom: 2.5rem;
     line-height: 1.1;
-    
+
     @media (max-width: 768px) {
       font-size: 2.8rem !important;
     }
@@ -207,12 +207,8 @@ const FullWidthImage = styled.div`
 
 const CallToAction = styled.div`
   text-align: center;
-  padding: 5rem 3rem;
-  background: #ffffff;
-  color: #1a1a1a;
+  padding: 4rem 0;
   margin-top: 4rem;
-  border-radius: 30px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 30px rgba(1, 46, 157, 0.1);
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease-out;
@@ -222,40 +218,27 @@ const CallToAction = styled.div`
     transform: translateY(0);
   }
   
-  h2 {
-    font-size: 4rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-    color: #012E9D !important;
-    letter-spacing: 0.2em;
-    text-shadow: 0 0 20px rgba(1, 46, 157, 0.3);
-  }
-  
   p {
     font-size: 1.5rem;
     font-weight: 600;
-    opacity: 1 !important;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
     line-height: 1.8;
     color: #1a1a1a !important;
   }
   
-  strong {
+  h2 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 0;
     color: #012E9D !important;
-    font-weight: 800 !important;
-    -webkit-text-fill-color: #012E9D !important;
-    background: none !important;
-    background-clip: unset !important;
-    -webkit-background-clip: unset !important;
-    filter: none !important;
-    text-shadow: 0 0 15px rgba(1, 46, 157, 0.4);
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 20px rgba(1, 46, 157, 0.3);
   }
 
   @media (max-width: 768px) {
-    padding: 3rem 2rem;
+    padding: 3rem 0;
     margin-top: 3rem;
-    border-radius: 20px;
     
     h2 {
       font-size: 3rem;
@@ -268,7 +251,7 @@ const CallToAction = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 2rem 1.5rem;
+    padding: 2rem 0;
     margin-top: 2rem;
     
     h2 {
@@ -347,7 +330,7 @@ const About: React.FC = () => {
               id="story-1"
               className={visibleElements.has('story-1') ? 'visible' : ''}
             >
-              <h2>The Journey Begins</h2>
+              <h2>Leadership</h2>
               <p>
                 Lisa has served District 1 on the Sacramento City Council since 2022, and has been a champion for the voices of her constituents on the issues that matter most to them; from public safety and sustainable growth to efficiency in our public services, and improving our community's infrastructure & family amenities.
               </p>
@@ -357,7 +340,7 @@ const About: React.FC = () => {
               id="image-1"
               className={visibleElements.has('image-1') ? 'visible' : ''}
             >
-              <img src="/lisaconf1.jpg" alt="Lisa Kaplan - Council Leadership" />
+              <img src="/lisaconf2.jpg" alt="Lisa Kaplan - Council Leadership" />
             </StoryImage>
           </StoryGrid>
 
@@ -375,14 +358,14 @@ const About: React.FC = () => {
               id="image-2"
               className={`reverse ${visibleElements.has('image-2') ? 'visible' : ''}`}
             >
-              <img src="/lisaconf4.jpg" alt="Lisa Kaplan - School Board Service" />
+              <img src="/lisaexpkids.jpg" alt="Lisa Kaplan - School Board Service" />
             </StoryImage>
             <StoryText 
               data-animate 
               id="story-2"
               className={visibleElements.has('story-2') ? 'visible' : ''}
             >
-              <h2>Two Decades of Service</h2>
+              <h2>Experience</h2>
               <p>
                 Prior to being elected to the City Council, Lisa served as a Natomas School Board member for twenty years, advocating for our local youth, families and schools.
               </p>
@@ -398,7 +381,7 @@ const About: React.FC = () => {
               id="story-3"
               className={visibleElements.has('story-3') ? 'visible' : ''}
             >
-              <h2>Leadership in Action</h2>
+              <h2>Results</h2>
               <p>
                 As our Councilmember, Lisa has led the way in striving to make D1 & Sacramento a safer, more vibrant, and better place to live, work and raise a family. Councilmember Kaplan successfully fought for action to address dangerous sideshows, reckless driving & illegal fireworks; reverse cuts in city services; stop waste from polluting our canals, streets & critical infrastructure; demand change & improved mailbox security from the US Postal Service; improve & beautify our local parks; while working hand-in-hand with constituents every day to deliver the action they need from their city government.
               </p>
@@ -418,14 +401,14 @@ const About: React.FC = () => {
               id="image-4"
               className={`reverse ${visibleElements.has('image-4') ? 'visible' : ''}`}
             >
-              <img src="/lisaconf2.jpg" alt="Lisa Kaplan - Community Champion" />
+              <img src="/lisacommunity.jpg" alt="Lisa Kaplan - Community Champion" />
             </StoryImage>
             <StoryText 
               data-animate 
               id="story-4"
               className={visibleElements.has('story-4') ? 'visible' : ''}
             >
-              <h2>Roots in Community</h2>
+              <h2>Community</h2>
               <p>
                 Councilmember Kaplan first moved to Sacramento in 1997, and is proud to have called Natomas home for decades. Lisa currently lives in the Westshore community with her husband, Brian, and their daughters, Viva & Asha.
               </p>
@@ -440,10 +423,10 @@ const About: React.FC = () => {
             id="cta"
             className={visibleElements.has('cta') ? 'visible' : ''}
           >
-            <h2>#BETTERTOGETHER</h2>
             <p>
-              The experiences and challenges she's faced throughout her life have helped prepare her to be a leader suited to represent a strong, diverse, and confident community like District 1 - a leader who knows that we are always, <strong>#Bettertogether</strong>.
+              The experiences and challenges she's faced throughout her life have helped prepare her to be a leader suited to represent a strong, diverse, and confident community like District 1 - a leader who knows that we are always better together.
             </p>
+            <h2>#BETTERTOGETHER</h2>
           </CallToAction>
         </StoryContent>
       </StorySection>
